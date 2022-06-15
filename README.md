@@ -6,7 +6,7 @@
 
 + Python 3.9
 
-+ Flask 2.0 or Higher
++ Flask 2.1 or Higher
 
 + MongoDB 
 
