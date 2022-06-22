@@ -4,12 +4,6 @@ class user(me.Document):
     username = me.StringField(required=True, unique=True, trim=True)
     year = me.IntField()
 
-
-
-
-
-
-
 '''
     rated = me.StringField()
     director = me.StringField()
