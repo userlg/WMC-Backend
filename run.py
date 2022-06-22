@@ -1,14 +1,10 @@
-from app import app, port
-
-import colorama as co
+from app import app, port, generate_load_bar
 
 if __name__ == '__main__':
-    co.init()
-
-    green = co.Fore.GREEN
-     
-
-    app.run(host='0.0.0.0', port=port)
+    
+    generate_load_bar()
+    
+    app.run(host='0.0.0.0', port=port) 
 
 
 ################################################   
