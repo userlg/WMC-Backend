@@ -2,30 +2,16 @@ from flask import Flask, Blueprint
 
 from dotenv import load_dotenv, find_dotenv
 
+from flask_mongoengine import MongoEngine
+
+from .routes.api import api_bp
+
+from .routes.auth import auth_bp
+
 from .Config.config import Production, Development
-
-from tqdm import tqdm, trange
-
-import colorama as co
-
-import random
-
-import time
 
 import os
 
-###------Simple decoration to the app
-def generate_load_bar() -> None:
-    co.init()
-    green = co.Fore.GREEN
-    yellow = co.Fore.YELLOW
-    print(green + '\t\t <----WMC Backend Application----> \n\n')
-    pbar = tqdm(total=50)
-    for i in range(5):
-        time.sleep(0.2)
-        pbar.update(10)
-    print(yellow)
-    pbar.close()
 
 ###-------Load the port 
 def get_port() -> int:
@@ -38,9 +24,19 @@ def create_app() -> Flask:
     
     #app.config.from_object(Production())
     app.config.from_object(Development())
+
+    #register the blueprint
+
+    app.register_blueprint(api_bp)
+
+    app.register_blueprint(auth_bp)
     
     return app
 
 app = create_app()
+
+db = MongoEngine(app)
+
+print(app.config['MONGODB_SETTINGS'])
 
 port = get_port()
