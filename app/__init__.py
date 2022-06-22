@@ -13,10 +13,8 @@ def get_port() -> int:
 def create_app() -> Flask:
     app = Flask(__name__)
     
-    app.config.from_object(Production())
-    #app.config.from_object(Development())
-
-    print(app.config)
+    #app.config.from_object(Production())
+    app.config.from_object(Development())
     
     return app
 
