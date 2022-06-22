@@ -19,7 +19,7 @@ def generate_load_bar() -> None:
     co.init()
     green = co.Fore.GREEN
     yellow = co.Fore.YELLOW
-    print(green + '\t\t WMC Backend Application \n\n')
+    print(green + '\t\t <----WMC Backend Application----> \n\n')
     pbar = tqdm(total=50)
     for i in range(5):
         time.sleep(0.2)
@@ -27,10 +27,12 @@ def generate_load_bar() -> None:
     print(yellow)
     pbar.close()
 
+###-------Load the port 
 def get_port() -> int:
     load_dotenv(find_dotenv())
     return os.environ.get('PORT')
 
+###------Create the main app
 def create_app() -> Flask:
     app = Flask(__name__)
     
