@@ -1,7 +1,7 @@
 import pytest
 
 
-
+'''
 @pytest.fixture
 def client():
     return app.test_client()
@@ -9,13 +9,7 @@ def client():
 def test_home(client):
     response = client.get("/")
     assert response.status_code == 200
-
-
-
-
-
-
-
+'''
 
 '''
 #def test_home(client):
