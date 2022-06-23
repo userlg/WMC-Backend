@@ -5,9 +5,22 @@ This file contains all methods and logic to managment the requests and the opera
 
 from tqdm import tqdm
 
+from dotenv import load_dotenv, find_dotenv
+
 import colorama as co
 
 import time
+
+import os
+
+
+###-------Load the port 
+def get_port() -> int:
+    load_dotenv(find_dotenv())
+    return os.environ.get('PORT')
+
+
+
 
 
 

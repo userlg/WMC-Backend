@@ -19,10 +19,8 @@ def home():
     user = User(username=username,year=year)
      
     user.save()
+
     return "<h3> Welcome to this app </h3>"
-
-
-
 
 '''
 from flask import render_template, Blueprint, jsonify, make_response
@@ -37,8 +35,6 @@ def index():
     #number = randint(1,10)
 
     return render_template('index.html')
-
-
 
 @views_bp.route('/all_users',methods=['GET'])
 def all_users():
