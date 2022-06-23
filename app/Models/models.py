@@ -6,7 +6,7 @@ from datetime import datetime as dt
 
 class User(me.Document):
     username = me.StringField(required=True, unique=True, trim=True)
-    year = me.IntField()
+    password = me.StringField(required=True,trim=True)
     create_at = me.DateTimeField(default=dt.now())
     
     #Meta Tag is to work with the mongoengine

@@ -21,15 +21,15 @@ def get_port() -> int:
 
 
 
-
-
-
 ###------Simple decoration to the app
 def generate_load_bar() -> None:
     co.init()
     green = co.Fore.GREEN
     yellow = co.Fore.YELLOW
-    print(green + '\n\n\t\t <------WMC BACKEND APPLICATION------> \n\n')
+    blue = co.Fore.BLUE
+
+    print(green + '\n\n\t\t <------WMC BACKEND APPLICATION------------> \n\n')
+    print(yellow + '\t\t <------SERVER RUNNING ON PORT: '+ blue + get_port() + yellow +' ------> \n\n' + green)
     pbar = tqdm(total=50)
     for i in range(5):
         time.sleep(0.2)

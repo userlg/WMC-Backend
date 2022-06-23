@@ -15,10 +15,6 @@ def home():
     username = random.choice(names) + str(random_number)
 
     year = random.randint(1980,2002)
-    
-    user = User(username=username,year=year)
-     
-    user.save()
 
     return "<h3> Welcome to this app </h3>"
 

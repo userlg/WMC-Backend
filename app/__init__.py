@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint
+from flask import Flask
 
 from flask_mongoengine import MongoEngine
 
@@ -11,8 +11,6 @@ from .Config.config import Production, Development
 from .libs.modules import get_port
 
 import os
-
-
 
 
 ###------Create the main app
@@ -33,7 +31,5 @@ def create_app() -> Flask:
 app = create_app()
 
 db = MongoEngine(app)
-
-#print(app.config['MONGODB_SETTINGS'])
 
 port = get_port()
