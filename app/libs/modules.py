@@ -16,7 +16,7 @@ def generate_load_bar() -> None:
     co.init()
     green = co.Fore.GREEN
     yellow = co.Fore.YELLOW
-    print(green + '\t\t <----WMC Backend Application----> \n\n')
+    print(green + '\n\n\t\t <------WMC BACKEND APPLICATION------> \n\n')
     pbar = tqdm(total=50)
     for i in range(5):
         time.sleep(0.2)
