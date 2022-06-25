@@ -1,19 +1,25 @@
 import pytest
 
+import warnings
+
 from app import create_app
 
 
 @pytest.fixture
 def app():
-    app = create_app()
+    app = app.create_app()
+    app.config.update(
+        {
+            "TESTING": True,
+        }
+    )
+    #yield app
     return app
 
 
-def test_home(client):
-   response = client.get('/')
-   assert response.status_code == 200
-   #assert isinstance(resp.json, dict)
-   assert response.data == b'Hello flask'
+@pytest.fixture()
+def runner(app):
+    return app.test_cli_runner()
 
 
 

@@ -17,3 +17,8 @@ def home():
     year = random.randint(1980,2002)
 
     return "Hello flask"
+
+
+@api_bp.route('/about', methods=['GET'])
+def about():
+    return "About Route"
