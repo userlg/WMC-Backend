@@ -32,4 +32,6 @@ app = create_app()
 
 db = MongoEngine(app)
 
+#print(app.config)
+
 port = get_port()

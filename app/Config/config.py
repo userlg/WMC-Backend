@@ -18,8 +18,27 @@ class Production(Config):
 
 class Development(Config):
      ENV = os.environ.get('ENV_DEVELOPMENT')
-     MONGODB_SETTINGS = { "db": "WMC_ENTERPRISE_DEV"}
+     MONGODB_SETTINGS = { 
+     "db": os.environ.get("DB_DEV"),
+    # "port": os.environ.get("DB_PORT"),
+    # "host": os.environ.get("HOST_DEV")
+     }
      DEBUG = True
 
 class Test(Config):
     TESTING = True
+
+
+'''
+app.config['MONGODB_SETTINGS'] = {
+    'db': 'project1',
+    'username':'webapp',
+    'password':'pwd123'
+}
+
+app.config['MONGODB_SETTINGS'] = {
+    'db': 'project1',
+    'host': 'mongodb://localhost/database_name'
+}
+
+'''
