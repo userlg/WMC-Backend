@@ -1,8 +1,10 @@
 FROM python:latest
 
+#Container update
 RUN apt-get update && apt-get dist-upgrade -y
 
-RUN apt-get install ufw -y && apt service ufw start && ufw allow 8000
+#Firewall setting and installation
+RUN apt-get install ufw -y &&  service ufw start && ufw allow 8000
 
 WORKDIR /var/www/app
 
