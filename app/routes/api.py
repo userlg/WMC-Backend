@@ -31,7 +31,7 @@ def allowed_file(filename):
 
 @api_bp.route("/", methods=["GET"])
 def home():
-    #This part is reserve to he home main view
+    # This part is reserve to he home main view
 
     return "Hello flask"
 
@@ -44,7 +44,7 @@ def about():
 @api_bp.route("/uploads", methods=["POST"])
 def uploads():
     if request.method == "POST":
-        new_name = str(uuid.uuid4()) + '.mp4'
+        new_name = str(uuid.uuid4()) + ".mp4"
         # check if the post request has the file part
         print(request.files)
         if "video" not in request.files:

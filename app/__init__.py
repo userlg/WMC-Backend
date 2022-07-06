@@ -16,11 +16,11 @@ import os
 ###------Create the main app
 def create_app() -> Flask:
     app = Flask(__name__)
-    
-    #app.config.from_object(Production())
+
+    # app.config.from_object(Production())
     app.config.from_object(Development())
 
-    #register the blueprint
+    # register the blueprint
 
     app.register_blueprint(api_bp)
 
@@ -29,6 +29,7 @@ def create_app() -> Flask:
     print(app.config)
 
     return app
+
 
 app = create_app()
 
