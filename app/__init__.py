@@ -6,7 +6,7 @@ from .routes.api import api_bp
 
 from .routes.auth import auth_bp
 
-from .Config.config import Production, Development
+from .config.config import Production, Development
 
 from .libs.modules import get_port
 
@@ -25,13 +25,13 @@ def create_app() -> Flask:
     app.register_blueprint(api_bp)
 
     app.register_blueprint(auth_bp)
-    
+
+    print(app.config)
+
     return app
 
 app = create_app()
 
 db = MongoEngine(app)
-
-#print(app.config)
 
 port = get_port()
