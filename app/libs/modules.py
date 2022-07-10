@@ -13,6 +13,7 @@ import time
 
 import os
 
+import hmac
 
 ###-------Load the port 
 def get_port() -> int:
