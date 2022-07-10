@@ -13,3 +13,7 @@ def login():
 @auth_bp.route("/signup", methods=["POST"])
 def signup():
     return controllers_signup()
+
+@auth_bp.route("/logout", methods=["GET"])
+def logout():
+    return "logout"

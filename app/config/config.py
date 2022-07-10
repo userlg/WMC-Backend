@@ -20,9 +20,7 @@ class Production(Config):
 class Development(Config):
      ENV = os.environ.get('ENV_DEVELOPMENT')
      MONGODB_SETTINGS = { 
-     "db": os.environ.get("DB_DEV"),
-    # "port": os.environ.get("DB_PORT"),
-    # "host": os.environ.get("HOST_DEV")
+     "db": os.environ.get("DB_DEV")
      }
      DEBUG = True
 
