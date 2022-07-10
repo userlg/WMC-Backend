@@ -20,6 +20,10 @@ def get_port() -> int:
     load_dotenv(find_dotenv())
     return os.environ.get('PORT')
 
+###-------Load the host
+def get_host() -> str:
+    load_dotenv(find_dotenv())
+    return os.environ.get('HOST')
 
 
 ###------Simple decoration to the app

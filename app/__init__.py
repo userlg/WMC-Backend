@@ -1,4 +1,7 @@
+# --------Imports Segments-----------------
 from flask import Flask
+
+from flask_cors import CORS
 
 from flask_mongoengine import MongoEngine
 
@@ -17,17 +20,21 @@ from .routes.auth import auth_bp
 
 from .config.config import Production, Development
 
-from .libs.modules import get_port
+from .libs.modules import get_port, get_host
 
 import os
 
+# ----------End Imports Segments------------
 
-###------Create the main app
+
+###------Function to Create the main app
 def create_app() -> Flask:
     app = Flask(__name__)
     # Settings app
     # app.config.from_object(Production())
     app.config.from_object(Development())
+    app.config['CORS_HEADERS'] = 'Content-Type'
+    CORS(app)
 
     jwt = JWTManager(app)
 
@@ -40,12 +47,20 @@ def create_app() -> Flask:
     app.register_blueprint(api_bp)
 
     app.register_blueprint(auth_bp)
-    # ------This line is only to debug
-    # print(app.config)
+    # ------This line is only to debug, this print allow see app configuration
+    print(app.config)
 
     return app
 
 
 app = create_app()
 
+socketio = SocketIO(app)
+
 port = get_port()
+
+host = get_host()
+
+@socketio.on("Return this successfully")
+def handle_message(data):
+    print("received message: " + data)
