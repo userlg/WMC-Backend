@@ -12,7 +12,6 @@ api_bp = Blueprint("api_bp", __name__)
 @api_bp.route("/", methods=["GET"])
 def home():
     # This part is reserve to he home main view
-
     return "Hello flask"
 
 
