@@ -14,6 +14,8 @@ class User(me.Document):
  
 
 '''
+    this is an example
+    
     rated = me.StringField()
     director = me.StringField()
     actors = me.ListField()
