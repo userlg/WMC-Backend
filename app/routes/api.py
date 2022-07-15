@@ -2,7 +2,7 @@ from flask import (
     Blueprint,
 )
 
-from ..Models.models import User
+from ..Models.users import User
 
 from ..libs.controllers import controllers_upload_videos, controllers_upload_photos
 

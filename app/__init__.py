@@ -34,6 +34,7 @@ def create_app() -> Flask:
     # app.config.from_object(Production())
     app.config.from_object(Development())
     app.config['CORS_HEADERS'] = 'Content-Type'
+    
     CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     jwt = JWTManager(app)

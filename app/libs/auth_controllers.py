@@ -2,7 +2,11 @@ from flask import Response, request, make_response
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from ..Models.models import User
+from ..Models.users import User
+
+from ..Models.blacklist import Blacklist
+
+from ..libs.resposes import generate_response, generate_response_jwt
 
 from datetime import datetime as dt
 
@@ -22,29 +26,18 @@ def controllers_login():
         try:
             user = User.objects(username=username).get_or_404()
         except Exception as e:
-            # print(e)
-            response = make_response({"message": "Some Data is incorrect"})
-            response.status_code = 401
-            return response
+            message = "Some Data is incorrect"
+            return generate_response(message,401)
 
         if user:
             if check_password_hash(user["password"], password):
                 access_token = create_access_token(identity=username)
-                response = make_response(
-                    {
-                        "message": "Login process successfully",
-                        "datetime": dt.now(),
-                        "secure_token": access_token,
-                    }
-                )
-                response.status_code = 200
-                return response
+                message = "Login process successfully"
+                return generate_response_jwt(message,access_token,200)
             else:
                 # -----Here the password is incorrect
-                response = make_response({"message": "Some Data is incorrect"})
-                response.status_code = 401
-                return response
-
+                message = "Some Data is incorrect"
+                return generate_response(message,401)
 
 # ---------Controllers to the signup of nwe users
 def controllers_signup() -> Response:
@@ -53,25 +46,17 @@ def controllers_signup() -> Response:
         password = request.json["password"]
 
         if len(username) < 6 or len(password) < 6:
-            response = make_response(
-                {
-                    "message": "username and password must be at least 6 characters long",
-                    "date": dt.now(),
-                }
-            )
-            response.status_code = 401
-            return response
+                message = "username and password must be at least 6 characters long"
+                return generate_response(message,401)
 
         user = User(username=username, password=generate_password_hash(password))
 
         try:
             user.save()
-            response = make_response({"message": "User created correctly"})
-            response.status_code = 201
-            return response
+            message ="User created correctly"
+            return generate_response(message,201)
 
         except Exception as e:
             print(e)
-            response = make_response({"message": "The username already exist"})
-            response.status_code = 400
-            return response
+            message = "The username already exist"
+            return  generate_response(message,401)
